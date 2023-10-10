@@ -4,11 +4,11 @@ using namespace std;
 
 int Prioritet(char op)
 {
-    if (op == '*' || op == '/')         // наиболее приоритетные
+    if (op == '*' || op == '/')         // Г­Г ГЁГЎГ®Г«ГҐГҐ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ­Г»ГҐ
     {
         return 2;
     }
-    else if (op == '+' || op == '-')    // менее приоритетные
+    else if (op == '+' || op == '-')    // Г¬ГҐГ­ГҐГҐ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ­Г»ГҐ
     {
         return 1;
     }
@@ -20,7 +20,7 @@ int Prioritet(char op)
 
 bool isOperator(char op)
 {
-    return op == '+' || op == '-' || op == '*' || op == '/';  // проверка на оператор
+    return op == '+' || op == '-' || op == '*' || op == '/';  // ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г®ГЇГҐГ°Г ГІГ®Г°
 }
 
 
@@ -37,7 +37,7 @@ int Calculate(int num1, int num2, char op)
     case '/':
         if (num2 == 0)
         {
-            cout << "Ошибка!\n деление на 0\n";
+            cout << "ГЋГёГЁГЎГЄГ !\n Г¤ГҐГ«ГҐГ­ГЁГҐ Г­Г  0\n";
         }
         return num1 / num2;
     default: 
@@ -45,11 +45,11 @@ int Calculate(int num1, int num2, char op)
     }
 }
 
-int Calculator::evaluateExpression(const string& task) // evaluateExpression принадлежит Calculator(структура)
+int Calculator::evaluateExpression(const string& task) // evaluateExpression ГЇГ°ГЁГ­Г Г¤Г«ГҐГ¦ГЁГІ Calculator(Г±ГІГ°ГіГЄГІГіГ°Г )
 {
     int i = 0;
 
-    int length = task.length();      // длина выражения
+    int length = task.length();      // Г¤Г«ГЁГ­Г  ГўГ»Г°Г Г¦ГҐГ­ГЁГї
     char* operators = new char[length];
     int* values = new int[length];
 
@@ -69,24 +69,24 @@ int Calculator::evaluateExpression(const string& task) // evaluateExpression при
             int num = 0;
             while (i < length && isdigit(task[i])) 
             {
-                num = num * 10 + (task[i] - '0');     /* эта строка берет значение num, умножает его на 10, 
-                                                               затем добавляет к этому результату разницу между 
-                                                               ASCII-кодом task[i] и '0'
-                                                               короче - мы преобразуем символ цифры из строки task в 
-                                                               целое число! и добавляем его к num*/                         
+                num = num * 10 + (task[i] - '0');     /* ГЅГІГ  Г±ГІГ°Г®ГЄГ  ГЎГҐГ°ГҐГІ Г§Г­Г Г·ГҐГ­ГЁГҐ num, ГіГ¬Г­Г®Г¦Г ГҐГІ ГҐГЈГ® Г­Г  10, 
+                                                               Г§Г ГІГҐГ¬ Г¤Г®ГЎГ ГўГ«ГїГҐГІ ГЄ ГЅГІГ®Г¬Гі Г°ГҐГ§ГіГ«ГјГІГ ГІГі Г°Г Г§Г­ГЁГ¶Гі Г¬ГҐГ¦Г¤Гі 
+                                                               ASCII-ГЄГ®Г¤Г®Г¬ task[i] ГЁ '0'
+                                                               ГЄГ®Г°Г®Г·ГҐ - Г¬Г» ГЇГ°ГҐГ®ГЎГ°Г Г§ГіГҐГ¬ Г±ГЁГ¬ГўГ®Г« Г¶ГЁГґГ°Г» ГЁГ§ Г±ГІГ°Г®ГЄГЁ task Гў 
+                                                               Г¶ГҐГ«Г®ГҐ Г·ГЁГ±Г«Г®! ГЁ Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ ГҐГЈГ® ГЄ num*/                         
                 i++;
             }
             values[valIndex++] = num;
         }
-        else if (task[i] == '(')              // первая скобка
+        else if (task[i] == '(')              // ГЇГҐГ°ГўГ Гї Г±ГЄГ®ГЎГЄГ 
         {
             operators[opIndex++] = task[i];
             i++;
         }
-        else if (task[i] == ')')              // вторая скобка
+        else if (task[i] == ')')              // ГўГІГ®Г°Г Гї Г±ГЄГ®ГЎГЄГ 
         {
-            while (opIndex > 0 && operators[opIndex - 1] != '(')        /*Если opIndex больше нуля,
-                                                                       еще есть необработанные операторы*/ 
+            while (opIndex > 0 && operators[opIndex - 1] != '(')        /*Г…Г±Г«ГЁ opIndex ГЎГ®Г«ГјГёГҐ Г­ГіГ«Гї,
+                                                                       ГҐГ№ГҐ ГҐГ±ГІГј Г­ГҐГ®ГЎГ°Г ГЎГ®ГІГ Г­Г­Г»ГҐ Г®ГЇГҐГ°Г ГІГ®Г°Г»*/ 
             {
                 char op = operators[--opIndex];
                 int num1 = values[--valIndex];
@@ -98,13 +98,13 @@ int Calculator::evaluateExpression(const string& task) // evaluateExpression при
         }
         else if (isOperator(task[i]))
         {
-            /*проверяем условие, которое гарантирует, что у нас есть операторы и что текущий оператор task[i] имеет меньший приоритет*/
+            /*ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ ГіГ±Г«Г®ГўГЁГҐ, ГЄГ®ГІГ®Г°Г®ГҐ ГЈГ Г°Г Г­ГІГЁГ°ГіГҐГІ, Г·ГІГ® Гі Г­Г Г± ГҐГ±ГІГј Г®ГЇГҐГ°Г ГІГ®Г°Г» ГЁ Г·ГІГ® ГІГҐГЄГіГ№ГЁГ© Г®ГЇГҐГ°Г ГІГ®Г° task[i] ГЁГ¬ГҐГҐГІ Г¬ГҐГ­ГјГёГЁГ© ГЇГ°ГЁГ®Г°ГЁГІГҐГІ*/
             while (opIndex > 0 && Prioritet(operators[opIndex - 1]) > Prioritet(task[i]))
             {
-                // извлекаем оператор с более высоким приоритетом и сохраняем его в переменную op
+                // ГЁГ§ГўГ«ГҐГЄГ ГҐГ¬ Г®ГЇГҐГ°Г ГІГ®Г° Г± ГЎГ®Г«ГҐГҐ ГўГ»Г±Г®ГЄГЁГ¬ ГЇГ°ГЁГ®Г°ГЁГІГҐГІГ®Г¬ ГЁ Г±Г®ГµГ°Г Г­ГїГҐГ¬ ГҐГЈГ® Гў ГЇГҐГ°ГҐГ¬ГҐГ­Г­ГіГѕ op
                 char op = operators[--opIndex];    
-                //Мы уменьшаем valIndex на 1, чтобы получить индекс последнего элемента values, сохраняем этот элемент в нум//
-                //почему префиксное, а не постфиксное? чтобы сразу отнять и тут же получить, а не  в след итерации
+                //ГЊГ» ГіГ¬ГҐГ­ГјГёГ ГҐГ¬ valIndex Г­Г  1, Г·ГІГ®ГЎГ» ГЇГ®Г«ГіГ·ГЁГІГј ГЁГ­Г¤ГҐГЄГ± ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  values, Г±Г®ГµГ°Г Г­ГїГҐГ¬ ГЅГІГ®ГІ ГЅГ«ГҐГ¬ГҐГ­ГІ Гў Г­ГіГ¬//
+                //ГЇГ®Г·ГҐГ¬Гі ГЇГ°ГҐГґГЁГЄГ±Г­Г®ГҐ, Г  Г­ГҐ ГЇГ®Г±ГІГґГЁГЄГ±Г­Г®ГҐ? Г·ГІГ®ГЎГ» Г±Г°Г Г§Гі Г®ГІГ­ГїГІГј ГЁ ГІГіГІ Г¦ГҐ ГЇГ®Г«ГіГ·ГЁГІГј, Г  Г­ГҐ  Гў Г±Г«ГҐГ¤ ГЁГІГҐГ°Г Г¶ГЁГЁ
                 int num1 = values[--valIndex];      
                 int num2 = values[--valIndex];
                 values[valIndex++] = Calculate(num1, num2, op);
